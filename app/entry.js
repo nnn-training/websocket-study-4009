@@ -18,7 +18,9 @@ movingButton.on('click', () => {
 const loadavg = $('#loadavg');
 
 setInterval(() => {
-  $.get('/server-status', {}, (data) => {
-    loadavg.text(data.loadavg.toString());
-  });
+  fetch('/server-status')
+    .then(response => response.json())
+    .then(data => {
+      loadavg.text(data.loadavg.toString());
+    });
 }, 10);
