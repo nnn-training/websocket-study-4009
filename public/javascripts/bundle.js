@@ -10802,30 +10802,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var block = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#block');
-var scalingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#scaling-button');
-scalingButton.on('click', function () {
+var block = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#block");
+var scalingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#scaling-button");
+scalingButton.on("click", function () {
   block.animate({
-    width: '200pt',
-    height: '200pt'
+    width: "200pt",
+    height: "200pt"
   }, 2000);
   block.animate({
-    width: '100pt',
-    height: '100pt'
+    width: "100pt",
+    height: "100pt"
   }, 2000);
 });
-var movingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#moving-button');
-movingButton.on('click', function () {
+var movingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#moving-button");
+movingButton.on("click", function () {
   block.animate({
-    'marginLeft': '500px'
+    marginLeft: "500px"
   }, 500);
   block.animate({
-    'marginLeft': '20px'
+    marginLeft: "20px"
   }, 1000);
 });
-var loadavg = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#loadavg');
+var loadavg = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#loadavg");
 setInterval(function () {
-  fetch('/server-status').then(function (response) {
+  fetch("/server-status").then(function (response) {
     return response.json();
   }).then(function (data) {
     loadavg.text(data.loadavg.toString());
