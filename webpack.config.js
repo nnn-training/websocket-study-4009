@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+
 module.exports = {
   context: __dirname + "/src/app",
   entry: "./entry",
@@ -25,6 +27,12 @@ module.exports = {
       buffer: require.resolve("buffer"),
       crypto: require.resolve("crypto-browserify"),
       stream: require.resolve("stream-browserify"),
+      vm: require.resolve("vm-browserify"),
     },
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
+  ],
 };
