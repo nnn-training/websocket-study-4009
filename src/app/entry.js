@@ -19,8 +19,8 @@ const loadavg = $("#loadavg");
 
 setInterval(() => {
   fetch("/server-status")
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       loadavg.text(data.loadavg.toString());
     });
 }, 1000);
