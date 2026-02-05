@@ -17,10 +17,14 @@ movingButton.on("click", () => {
 
 const loadavg = $("#loadavg");
 
-setInterval(() => {
-  fetch("/server-status")
-    .then(response => response.json())
-    .then(data => {
-      loadavg.text(data.loadavg.toString());
-    });
-}, 1000);
+import io from 'socket.io-client';
+const socket = io('http://localhost:3000');
+socket.on('server-status', (data) => {
+  loadavg.text(data.loadavg.toString());
+});
+socket.on('connect', () => {
+  console.log('接続されました');
+});
+socket.on('disconnect', () => {
+  console.log('切断されました');
+});

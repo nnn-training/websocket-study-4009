@@ -113,7 +113,20 @@ app.onError((error, c) => {
 
 const port = 3000;
 console.log(`Server running at http://localhost:${port}/`);
-serve({
+const server = serve({
   fetch: app.fetch,
   port,
+});
+
+const os = require('node:os');
+const { Server } = require('socket.io');
+const io = new Server(server);
+
+function emitServerStatus(socket) {
+  socket.emit('server-status', { loadavg: os.loadavg() });
+}
+
+io.on('connection', (socket) => {
+  setInterval(emitServerStatus, 30, socket);
+  console.log('接続がありました！');
 });
